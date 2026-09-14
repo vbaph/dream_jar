@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <defs>
+    <linearGradient id="ssky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#cbe1ff"/><stop offset="60%" stop-color="#f6e4f2"/><stop offset="100%" stop-color="#ffe6ee"/>
+    </linearGradient>
+    <linearGradient id="fuji" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/><stop offset="45%" stop-color="#cdd9f2"/><stop offset="100%" stop-color="#8296c6"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#ssky)"/>
+  <path d="M180 470l150-250 60-40 60 40 150 250z" fill="url(#fuji)"/>
+  <path d="M330 220l60-40 60 40-28 30-32-24-32 24z" fill="#ffffff"/>
+  <path d="M0 500h800v100H0z" fill="#dfe9d8"/>
+  <g>
+    <path d="M120 500c0-70 8-120 26-170" stroke="#8b6552" stroke-width="14" fill="none" stroke-linecap="round"/>
+    <g fill="#f7b3cc">
+      <circle cx="146" cy="300" r="52"/><circle cx="100" cy="330" r="40"/><circle cx="196" cy="338" r="44"/>
+      <circle cx="132" cy="266" r="34"/><circle cx="186" cy="286" r="34"/>
+    </g>
+  </g>
+  <g>
+    <path d="M690 500c0-56-6-96-20-136" stroke="#8b6552" stroke-width="11" fill="none" stroke-linecap="round"/>
+    <g fill="#fbc9da">
+      <circle cx="668" cy="352" r="40"/><circle cx="712" cy="374" r="32"/><circle cx="640" cy="382" r="34"/>
+    </g>
+  </g>
+  <g fill="#f9c2d4">
+    <circle cx="260" cy="120" r="5"/><circle cx="330" cy="90" r="4"/><circle cx="420" cy="130" r="5"/>
+    <circle cx="520" cy="96" r="4"/><circle cx="600" cy="140" r="5"/><circle cx="210" cy="180" r="4"/>
+    <circle cx="700" cy="180" r="4"/><circle cx="380" cy="200" r="4"/>
+  </g>
+</svg>

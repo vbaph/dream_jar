@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <defs>
+    <linearGradient id="xsky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#5f6ea8"/><stop offset="58%" stop-color="#d9a07f"/><stop offset="100%" stop-color="#f0cfa2"/>
+    </linearGradient>
+    <linearGradient id="wall" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#a2735a"/><stop offset="1" stop-color="#6d4a3c"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#xsky)"/>
+  <circle cx="180" cy="170" r="52" fill="#ffe6bc" opacity=".85"/>
+  <path d="M0 400q200-40 400-16t400-24v240H0z" fill="#b58a63"/>
+  <g>
+    <rect x="90" y="330" width="620" height="150" rx="6" fill="url(#wall)"/>
+    <path d="M60 336h680l-24-30H84z" fill="#8d6250"/>
+    <g fill="#6d4a3c">
+      <rect x="140" y="280" width="120" height="60" rx="6"/>
+      <rect x="340" y="280" width="120" height="60" rx="6"/>
+      <rect x="540" y="280" width="120" height="60" rx="6"/>
+    </g>
+    <g fill="#5b3d33">
+      <path d="M120 280h160l-16-30H136z"/><path d="M320 280h160l-16-30H336z"/><path d="M520 280h160l-16-30H536z"/>
+    </g>
+    <rect x="352" y="380" width="96" height="100" rx="48" fill="#4a3229"/>
+    <rect x="388" y="380" width="24" height="100" fill="#3b271f"/>
+    <g fill="#e0b184">
+      <rect x="170" y="386" width="44" height="60" rx="6"/>
+      <rect x="586" y="386" width="44" height="60" rx="6"/>
+    </g>
+  </g>
+  <path d="M0 500h800v100H0z" fill="#7a5b45"/>
+  <g fill="#8d6a52">
+    <rect x="60" y="470" width="70" height="30" rx="4"/><rect x="670" y="470" width="70" height="30" rx="4"/>
+  </g>
+</svg>

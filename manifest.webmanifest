@@ -1,0 +1,26 @@
+{
+  "name": "梦想储蓄罐 Dream Jar",
+  "short_name": "梦想储蓄罐",
+  "description": "把梦想装进罐子里：存钱越多，玻璃罐越透明，梦想图片越清晰。",
+  "lang": "zh-CN",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#eef3ff",
+  "theme_color": "#8ea8f0",
+  "icons": [
+    {
+      "src": "assets/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ]
+}
