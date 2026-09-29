@@ -101,10 +101,6 @@ export function renderSettings(el) {
           <li>进度越高，玻璃罐越透明、梦想图片越清晰，从磨砂到完全解锁。</li>
           <li>存满之后上传实现梦想时的真实照片，它会进入「梦想收藏馆」。</li>
         </ol>
-        <div class="note-box">
-          ${icons.sparkles}
-          <p>小提示：把网址添加到手机主屏幕，就像一个小 App，随时可以记一笔。</p>
-        </div>
       </section>
     </div>`;
 
