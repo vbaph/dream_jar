@@ -1,83 +1,70 @@
 # 梦想储蓄罐 Dream Jar
 
-一个「把梦想装进罐子里」的数字储蓄网页：创建梦想、上传梦想照片、设置目标金额，每存一笔钱，玻璃罐里的水位就会升高、磨砂玻璃会变得更透明，罐子上的梦想图片也会一点点变清晰。存满之后上传实现梦想时的真实照片，生成属于你的梦想纪念档案。
+> 在线演示：https://vbaph.github.io/dream_jar/
+>
+> 个人作品：独立完成需求文档、页面原型与前端实现（AI 辅助编码）。
 
-纯静态网站，**不需要服务器、不需要数据库、不需要安装任何依赖**，直接放到 GitHub Pages 就能用。
+把「存钱」这件抽象的事，变成看得见的进度：每存一笔，玻璃罐里的水位升高一点、磨砂玻璃透明一点、罐子上的梦想照片清晰一点；存满 100% 时罐子完全透明，可以上传实现梦想时的真实照片，收进属于自己的梦想纪念档案。
 
----
+<!-- 想放首页截图：把一张截图命名为 preview.png 上传到仓库根目录，然后删掉下面这行的注释符号
+![首页](preview.png)
+-->
 
-## 一、部署到 GitHub（3 分钟）
+## 为什么做这个
 
-### 方式 A：网页上传（最简单，不用命令行）
+主流记账工具只回答"余额增加了多少"，但看不出自己离目标还有多远，也很难持续给动力。这个项目把储蓄过程转译成一条视觉曲线——梦想照片从模糊逐渐变清晰，罐子从磨砂逐渐变透明：
 
-1. 登录 GitHub，点右上角 **+ → New repository**，仓库名例如 `dream-jar`，选择 **Public**，创建。
-2. 进入新仓库，点 **Add file → Upload files**。
-3. 把本文件夹里的**全部内容**（`index.html`、`css/`、`js/`、`assets/`、`manifest.webmanifest`、`sw.js`、`.nojekyll`、`README.md`）拖进上传框，点 **Commit changes**。
-   - 注意：要上传文件夹里面的文件，而不是外层的 `dream-jar` 文件夹本身；`index.html` 必须直接位于仓库根目录。
-4. 进入仓库 **Settings → Pages**：
-   - **Source** 选择 `Deploy from a branch`
-   - **Branch** 选择 `main`，目录选择 `/ (root)`，点 **Save**
-5. 等 1–2 分钟，刷新 Pages 页面，会看到网址：`https://你的用户名.github.io/dream-jar/`，打开即可使用。
-
-### 方式 B：命令行（Git 已安装）
-
-```bash
-cd dream-jar
-git init
-git add .
-git commit -m "feat: 梦想储蓄罐首个版本"
-git branch -M main
-git remote add origin https://github.com/你的用户名/dream-jar.git
-git push -u origin main
-```
-
-推送后在仓库 **Settings → Pages** 里按上面第 4 步开启一次即可。以后每次改完文件执行 `git add . && git commit -m "update" && git push`，网页会自动更新（约 1 分钟后生效）。
-
-> 小贴士：想更新网页但浏览器还显示旧版本时，按 `Ctrl + F5`（Mac 用 `Cmd + Shift + R`）强制刷新即可。
-
-### 本地预览
-
-请用本地服务器打开（**直接双击 `index.html` 时，Chrome / Edge 会因为文件安全策略拒绝加载 ES 模块，页面会是空白**，这是浏览器限制，不是网页故障）：
-
-```bash
-cd dream-jar
-python -m http.server 8080
-# 然后浏览器打开 http://localhost:8080
-```
-
-如果电脑上装了 Node，也可以用 `npx serve` 或 VS Code 的 Live Server 插件。
-
----
-
-## 二、已实现的功能
-
-按《梦想储蓄罐网页功能需求说明书（PRD）》与页面原型图说明实现：
-
-| 模块 | 实现情况 |
+| 完成度 | 玻璃罐状态 |
 | --- | --- |
-| 首页 Dashboard | 当期梦想的大型玻璃罐 + 目标/已存/还需金额 + 进度 + 快速存钱 |
-| 从模糊到清晰 | 0% / 33% / 66% / 100% 四个阶段的罐子对比展示 |
-| 创建梦想 | 梦想名称、梦想图片、目标金额、梦想描述、完成纪念文字（另含开始时间、存钱方式、存钱笔记） |
-| 储蓄记录 | 存入金额、日期、备注；自动计算累计金额与完成比例，支持删除记录 |
-| 储蓄罐视觉系统 | 完成度驱动模糊度、磨砂度、水位、透明度、饱和度与光效，五个状态阈值与 PRD 一致 |
-| 梦想详情页 | 大型罐子（可用鼠标/手指滑动换角度查看）+ 梦想数据 + 存钱记录 + 储蓄时间线 + 梦想的样子 |
-| 梦想完成 | 上传实现照片、完成日期、最终金额、留言，触发庆祝动画 |
-| 梦想收藏馆 | 照片墙式展示所有已完成的梦想，点击查看完整纪念档案 |
-| 数据保存 | 浏览器 LocalStorage（含图片压缩），支持导出 / 导入 JSON 备份 |
-| 其他 | 夜间模式、移动端底部导航、离线缓存（PWA）、示例数据一键载入 |
+| 0–20% | 磨砂玻璃，梦想图片高度模糊 |
+| 20–50% | 轮廓出现，玻璃半透明 |
+| 50–80% | 画面明显，水位过半 |
+| 80–99% | 接近清晰，光效增强 |
+| 100% | 完全透明，触发完成动画，解锁纪念档案 |
 
-第一版**没有**实现（与 PRD 的「暂不实现功能」一致）：账号登录、支付接口、真实银行连接、多人共享。
+完成度 = 已存金额 ÷ 目标金额 × 100%，上面五个阈值直接驱动一组 CSS 变量（模糊度、磨砂层透明度、水位高度、饱和度、光晕），所以视觉变化是连续插值出来的，而不是切换几张图片。
 
----
+## 功能
 
-## 三、目录结构
+- **创建梦想**：名称、梦想照片、目标金额、描述、完成纪念语，另可填开始时间 / 目标时间 / 存钱方式 / 存钱笔记
+- **存入一笔**：金额、日期、备注，带快捷金额按钮；保存后自动更新完成度与罐子状态
+- **梦想详情**：可用鼠标或手指拖动旋转的玻璃罐、梦想数据卡、存钱记录、储蓄时间线
+- **完成梦想**：上传实现瞬间的真实照片、完成日期、最终金额、留言，并触发庆祝动画
+- **梦想收藏馆**：照片墙式展示所有已完成的梦想与它们的纪念档案
+- **首次访问引导**：新访客会看到一张引导卡片，「开始使用」之后不再出现
+- **数据管理**：导出 / 导入 JSON 备份、一键载入示例数据、清空全部数据
+- **外观**：夜间模式、减少动画开关
+
+## 技术实现与取舍
+
+- 原生 ES 模块 + 原生 CSS：**零框架、零构建步骤、零运行时依赖**，克隆下来就能跑
+- 玻璃拟态视觉：半透明卡片 + 背景模糊 + 柔和阴影；罐子用分层 DOM 配合 CSS 变量模拟玻璃厚度、水位波动、高光与磨砂，并支持拖动查看角度
+- 数据保存在浏览器 LocalStorage：上传的图片先用 Canvas 压缩到最长边 1200px / JPEG 0.8 再保存，避免超出浏览器约 5MB 的存储上限；同时提供 JSON 导出与导入做备份
+- 响应式：桌面端左侧导航 + 三栏布局，移动端底部导航，引导卡片在窄屏自动变成底部浮层
+- PWA：manifest + service worker，页面文档走网络优先、静态资源走缓存优先，可「添加到主屏幕」离线使用
+- 无障碍：键盘可聚焦，动效遵循 `prefers-reduced-motion`，并额外提供「减少动画」开关
+
+**取舍说明**：第一阶段的用户只有自己、页面是一次性静态站，引入构建链的收益不抵复杂度，所以先用原生模块把交互和视觉做扎实。数据层单独抽在 `js/store.js` 里，将来接 Supabase / Firebase 做云端同步时，页面代码基本不用改。
+
+## 本地运行
+
+```bash
+cd dream_jar
+python -m http.server 8080
+# 然后打开 http://localhost:8080
+```
+
+> 直接双击 `index.html` 会白屏，因为浏览器出于安全策略拒绝以 `file://` 加载 ES 模块——用上面的本地服务器即可。
+
+部署方面，这是一个纯静态站点，GitHub Pages / Vercel / Netlify 都能直接托管，推到仓库后在 Settings → Pages 里选择 `main` 分支的 `/ (root)` 即可。
+
+## 目录结构
 
 ```
-dream-jar/
-├── index.html                 # 入口页面
-├── manifest.webmanifest       # PWA 配置（可添加到手机主屏幕）
+dream_jar/
+├── index.html                 # 入口页面（含首次访问的引导卡片）
+├── manifest.webmanifest       # PWA 配置
 ├── sw.js                      # 离线缓存
-├── .nojekyll                  # 告诉 GitHub Pages 不要用 Jekyll 处理
 ├── css/
 │   └── style.css              # 全部样式：玻璃拟态、储蓄罐视觉系统、响应式
 ├── js/
@@ -87,44 +74,26 @@ dream-jar/
 │   ├── components.js          # 通用片段：卡片、记录、时间线、图标
 │   ├── dialogs.js             # 弹窗：创建 / 编辑 / 存钱 / 完成梦想
 │   ├── ui.js                  # Toast、弹窗容器、确认框、庆祝动画
-│   ├── utils.js               # 工具函数（金额日期格式化、图片压缩）
-│   └── views/
-│       ├── home.js            # 首页
-│       ├── dreams.js          # 我的梦想
-│       ├── detail.js          # 梦想详情
-│       ├── completed.js       # 已完成 / 梦想收藏馆 / 梦想档案
-│       └── settings.js        # 设置
+│   ├── utils.js               # 工具函数：金额日期格式化、图片压缩
+│   └── views/                 # 首页 / 我的梦想 / 详情 / 收藏馆 / 设置
 └── assets/
     ├── icon.svg               # 站点图标
-    └── samples/               # 示例梦想的插画（可删除）
+    └── samples/               # 示例梦想的插画
 ```
 
----
+## 数据结构
 
-## 四、数据说明
+全部数据存在浏览器的 LocalStorage 里，键名 `dreamjar.v1`，没有后端：
 
-- 所有数据保存在你浏览器的 **LocalStorage** 中，键名 `dreamjar.v1`。换浏览器、换设备、清理浏览器数据都会看不到原来的记录，建议定期到「设置 → 导出备份」保存 JSON 文件。
-- 上传的图片会先在浏览器里压缩（最长边 1200px、JPEG 质量 0.8）再保存，避免占用过多空间。浏览器本地存储通常只有约 5MB，如果提示保存失败，请先导出备份并减少图片数量。
-- 数据结构对应 PRD 中的三张表：
-  - `dreams[]` ↔ Dream：`id / name / image / target / description / completeMessage / startDate / targetDate / savingMethod / savingNote / createTime / status`
-  - `dreams[].deposits[]` ↔ Deposit：`id / amount / date / note / createTime`
-  - `dreams[].archive` ↔ Archive：`id / finishImage / finishDate / finalAmount / memoryText`
+- `dreams[]` — 梦想：`id / name / image / target / description / completeMessage / startDate / targetDate / savingMethod / savingNote / createTime / status`
+- `dreams[].deposits[]` — 存钱记录：`id / amount / date / note / createTime`
+- `dreams[].archive` — 完成档案：`id / finishImage / finishDate / finalAmount / memoryText`
 
-想升级成「云端同步、多设备使用」时，只需把 `js/store.js` 的读写换成 Supabase 或 Firebase 的接口，页面代码基本不用改。
+## 后续规划
 
----
+- **V2.0**：账号系统 + 云端数据库，多设备同步
+- **V3.0**：多人使用、梦想分享、好友监督
 
-## 五、视觉与文案可自定义的地方
+## 兼容性
 
-- 主色、圆角、阴影：`css/style.css` 顶部的 `:root` 变量（`--primary`、`--accent` 等）。
-- 储蓄罐的模糊 / 水位 / 透明度曲线：`js/store.js` 里的 `jarVisual()`。
-- 示例梦想：`js/store.js` 里的 `sampleDreams()`；不想要示例数据可在「设置 → 清空所有数据」，或把 `js/app.js` 中首次载入示例的那几行删掉。
-- 首页文案：`js/views/home.js`。
-
----
-
-## 六、兼容性
-
-在 Chrome、Edge、Safari、Firefox 的近几年版本上均可正常使用；支持手机端（底部导航栏 + 触摸滑动查看罐子）。玻璃拟态使用 `backdrop-filter`，极老的浏览器会降级成半透明卡片，功能不受影响。
-
-祝你的每一个梦想，都能被装进罐子里，然后一点点变成现实。
+Chrome / Edge / Safari / Firefox 近几年的版本都能正常使用。玻璃拟态依赖 `backdrop-filter`，极老的浏览器会降级成半透明卡片，功能不受影响。
