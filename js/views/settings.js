@@ -45,6 +45,13 @@ export function renderSettings(el) {
           <button class="switch ${lessMotion ? "is-on" : ""}" type="button" data-setting="motion"
                   aria-label="减少动画" aria-pressed="${lessMotion}"></button>
         </div>
+                <div class="setting-row">
+          <div class="setting-row__text">
+            <h4>新手引导</h4>
+            <p>首页那张「欢迎来到梦想储蓄罐」的卡片只在第一次打开时出现，想再看一次就点右边。</p>
+          </div>
+          <a class="btn btn--ghost btn--sm" href="?guide=1">重新显示</a>
+        </div>
       </section>
 
       <section class="card">
