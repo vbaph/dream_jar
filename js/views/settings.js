@@ -100,14 +100,18 @@ export function renderSettings(el) {
 
       <section class="card">
         <div class="section__head" style="margin-bottom:8px">
-          <div class="section__title"><h2 style="font-size:16px">怎么用</h2></div>
+          <div class="section__title"><h2 style="font-size:16px">关于这个作品</h2></div>
         </div>
-        <ol class="howto">
-          <li>点「创建新梦想」，写下梦想名称、目标金额，上传一张代表梦想的照片。</li>
-          <li>每存下一笔钱，就点「存入一笔」记进去，罐子里的水位会升高。</li>
-          <li>进度越高，玻璃罐越透明、梦想图片越清晰，从磨砂到完全解锁。</li>
-          <li>存满之后上传实现梦想时的真实照片，它会进入「梦想收藏馆」。</li>
-        </ol>
+        <p class="about-lead">把「存钱」这件抽象的事，变成看得见的进度：每存一笔，罐子里的水位升高一点、磨砂玻璃透明一点、梦想照片也清晰一点；存满 100% 时罐子完全透明，可以上传实现梦想时的真实照片，收进「梦想收藏馆」。</p>
+        <ul class="about-list">
+          <li>无后端、无框架、无构建步骤：原生 ES 模块 + 玻璃拟态 CSS，克隆下来就能跑</li>
+          <li>数据保存在浏览器本机（LocalStorage），支持导出 / 导入 JSON 备份；上传的图片会先压缩到 1200px 再保存</li>
+          <li>完成度驱动五种视觉状态（0–20% 磨砂 → 100% 完全解锁），阈值与自写的 PRD 一一对应</li>
+          <li>移动端适配，带离线缓存，可「添加到主屏幕」当 App 使用</li>
+        </ul>
+        <div class="about-links">
+          <a class="link-btn" href="https://github.com/vbaph/dream_jar" target="_blank" rel="noopener">查看源码 →</a>
+        </div>
       </section>
     </div>`;
 
